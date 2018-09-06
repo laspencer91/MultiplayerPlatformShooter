@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee0f6d200987a944909915b36c4c4f5, type: 3}
+  m_Name: ShotgunData
+  m_EditorClassIdentifier: 
+  weaponId: 1
+  fireRate: 0.5
+  reloadRate: 3
+  shotsPerClip: 5
+  projectile: {fileID: 114734402320180556, guid: 4a9203e1a95b9a4428b6524d1c919e70,
+    type: 2}
