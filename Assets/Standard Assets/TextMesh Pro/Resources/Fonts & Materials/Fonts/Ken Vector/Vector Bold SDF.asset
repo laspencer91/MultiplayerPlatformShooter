@@ -11,19 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Vector Bold SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1368982189
   material: {fileID: 21972383837605704}
-  materialHashCode: 0
+  materialHashCode: 768452998
   fontAssetType: 1
   m_fontInfo:
     Name: KenVector Bold
     PointSize: 53
-    Scale: 0
+    Scale: 1
     CharacterCount: 70
     LineHeight: 79.5
     Baseline: 0
     Ascender: 66.25
-    CapHeight: 0
+    CapHeight: 66.25
     Descender: -13.25
     CenterLine: 0
     SuperscriptOffset: 66.25
@@ -33,7 +33,7 @@ MonoBehaviour:
     UnderlineThickness: 2.6396484
     strikethrough: 19.272728
     strikethroughThickness: 2.6396484
-    TabWidth: 0
+    TabWidth: 132.5
     Padding: 5
     AtlasWidth: 512
     AtlasHeight: 512
@@ -42,10 +42,10 @@ MonoBehaviour:
   - id: 32
     x: 6
     y: 517
-    width: 0
-    height: 0
+    width: 13.25
+    height: 79.5
     xOffset: 0
-    yOffset: 0
+    yOffset: 66.25
     xAdvance: 13.25
     scale: 1
   - id: 33
@@ -796,9 +796,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

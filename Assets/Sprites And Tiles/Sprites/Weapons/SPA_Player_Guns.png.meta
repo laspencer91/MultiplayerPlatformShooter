@@ -4,6 +4,9 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: SPA_Player_Guns_0
     21300002: SPA_Player_Guns_1
+    21300004: SPA_Player_Guns_2
+    21300006: SPA_Player_Guns_3
+    21300008: SPA_Player_Guns_4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -89,18 +92,18 @@ TextureImporter:
       name: SPA_Player_Guns_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 218
-        width: 24
-        height: 6
+        x: 6
+        y: 216
+        width: 22
+        height: 10
       alignment: 9
-      pivot: {x: 0.19209091, y: 0.46578726}
+      pivot: {x: 0.102387995, y: 0.42440948}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96169c1383f392041b3d6ca78bd8d01f
+      spriteID: 989cba4cbf2ff494581424f2729fd8af
       vertices: []
       indices: 
       edges: []
@@ -109,10 +112,70 @@ TextureImporter:
       name: SPA_Player_Guns_1
       rect:
         serializedVersion: 2
-        x: 33
-        y: 196
-        width: 67
-        height: 30
+        x: 38
+        y: 216
+        width: 22
+        height: 10
+      alignment: 9
+      pivot: {x: 0.102387995, y: 0.42440948}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 625dbd8d3f0aec243bb14075cdd5f51d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPA_Player_Guns_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 216
+        width: 22
+        height: 10
+      alignment: 9
+      pivot: {x: 0.102387995, y: 0.42440948}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd5a631490e5b84ab96208215f3ed4f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPA_Player_Guns_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 216
+        width: 22
+        height: 10
+      alignment: 9
+      pivot: {x: 0.102387995, y: 0.42440948}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb87a7e804b01b448de7cecaad0ff9c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPA_Player_Guns_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 181
+        width: 22
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,7 +183,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02563117cc926fe4fb8f18fe23e9db2e
+      spriteID: d7f13bc28cf187048831466b96b33869
       vertices: []
       indices: 
       edges: []
