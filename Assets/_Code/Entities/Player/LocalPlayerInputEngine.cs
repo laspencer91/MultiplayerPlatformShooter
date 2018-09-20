@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityStandardAssets.CrossPlatformInput;
 
-public struct PlayerInput : INetworkSerializable
+public struct PlayerInput
 {
     public ChangeWeaponAction changeWeaponAction;
     public bool Fire1Button;
@@ -51,33 +51,17 @@ public struct PlayerInput : INetworkSerializable
 public class LocalPlayerInputEngine : MonoBehaviour
 {
     PlayerInput    input             = new PlayerInput();
-    PlayerInput    previousInput     = new PlayerInput();
     Player         player;
     NetworkManager netManager;
-
-    Queue<PlayerInput> networkInputs = new Queue<PlayerInput>();
-
-    bool isOnlineGameSession;
 
     private void Awake()
     {
         player = GetComponent<Player>();
-        isOnlineGameSession = GameSession.type == GameSessionType.online;
-
-        if (isOnlineGameSession)
-            netManager = FindObjectOfType<NetworkManager>();
     }
 
     void Update ()
     {
-        if (player.isLocalPlayer)
-        {
-            HandleLocalInput();
-        }
-        else if (netManager.isServer())
-        {
-            HandleServerInput();
-        }
+        HandleLocalInput();
 
         // Reset Inputs needed to reset every frame.. no matter netwoked or not
         input.JumpButtonDown     = false;
@@ -93,42 +77,12 @@ public class LocalPlayerInputEngine : MonoBehaviour
         else
             input.changeWeaponAction = ChangeWeaponAction.None;
 
-        input.Fire1Button = CrossPlatformInputManager.GetButton("Fire1");
-        input.JumpButtonDown = CrossPlatformInputManager.GetButtonDown("Jump");
-        input.JumpButtonReleased = CrossPlatformInputManager.GetButtonUp("Jump");
-        input.VerticalAxisInput = CrossPlatformInputManager.GetAxis("Vertical");
+        input.Fire1Button         = CrossPlatformInputManager.GetButton("Fire1");
+        input.JumpButtonDown      = CrossPlatformInputManager.GetButtonDown("Jump");
+        input.JumpButtonReleased  = CrossPlatformInputManager.GetButtonUp("Jump");
+        input.VerticalAxisInput   = CrossPlatformInputManager.GetAxis("Vertical");
         input.HorizontalAxisInput = CrossPlatformInputManager.GetAxis("Horizontal");
 
-        if (isOnlineGameSession)
-        {
-            if (!netManager.isServer() && !previousInput.Equals(input))
-            {
-                ((ClientNetworkManager)netManager).SendPlayerInput(input);
-            }
-        }
-
-        previousInput = input;
         player.ExecuteUpdate(input);
-    }
-
-    private void HandleServerInput()
-    {
-        bool updatedThisFrame = false;
-
-        while (networkInputs.Count > 0)
-        {
-            player.ExecuteUpdate(networkInputs.Dequeue());
-            updatedThisFrame = true;
-        }
-
-        if (!updatedThisFrame)
-            player.ExecuteUpdate(input);
-    }
-
-    public void SetInput(PlayerInput input)
-    {
-        this.input = input;
-        networkInputs.Enqueue(input);
-        Debug.Log(input.ToString());
     }
 }
