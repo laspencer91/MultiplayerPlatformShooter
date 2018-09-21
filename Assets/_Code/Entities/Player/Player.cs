@@ -38,9 +38,9 @@ public class Player : NetworkBehaviour
         if (isLocalPlayer)
             FindObjectOfType<CameraSystem>().SetCameraTarget(gameObject);
 
-
-        networkId = "Player " + GetComponent<NetworkIdentity>().netId;
         InitializeWeapons();
+
+        networkId = CustomNetworkManager.CreateID(this);
     }
 
     private void Update()
@@ -49,12 +49,16 @@ public class Player : NetworkBehaviour
         {
             PlayerInput input = InputHandler.PollLocalPlayerInput();
             ExecuteLocalPlayerUpdate(input);
-            CmdPlayerUseWeapon(networkId);
         }
         else
         {
             ExecuteNetworkPlayerUpdate();
         }
+    }
+
+    private void OnDisable()
+    {
+        GameSession.UnregisterPlayer(this);
     }
 
     void InitializeWeapons()
