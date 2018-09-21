@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using Mirror;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
+    [HideInInspector] public string networkId = "";
+
     [SerializeField] LayerMask  standardBlockLayer;
     [SerializeField] Gun        m_PrimaryWeapon;
     [SerializeField] Gun        m_SecondaryWeapon;
@@ -20,14 +23,7 @@ public class Player : MonoBehaviour
     Animator          m_Animator;
     WeaponSystem      m_WeaponSystem;
 
-    public bool isLocalPlayer { set; get; }
-
-    float startingGravity;
-
-    private void Awake()
-    {
-        isLocalPlayer = true;
-    }
+    float  startingGravity;
 
     void Start ()
     {
@@ -42,7 +38,23 @@ public class Player : MonoBehaviour
         if (isLocalPlayer)
             FindObjectOfType<CameraSystem>().SetCameraTarget(gameObject);
 
+
+        networkId = "Player " + GetComponent<NetworkIdentity>().netId;
         InitializeWeapons();
+    }
+
+    private void Update()
+    {
+        if (isLocalPlayer)
+        {
+            PlayerInput input = InputHandler.PollLocalPlayerInput();
+            ExecuteLocalPlayerUpdate(input);
+            CmdPlayerUseWeapon(networkId);
+        }
+        else
+        {
+            ExecuteNetworkPlayerUpdate();
+        }
     }
 
     void InitializeWeapons()
@@ -56,17 +68,25 @@ public class Player : MonoBehaviour
         m_WeaponSystem.SpawnWeaponInSystem(m_SecondaryWeapon);
     }
 
-	public void ExecuteUpdate (PlayerInput input)
+	public void ExecuteLocalPlayerUpdate (PlayerInput input)
     {
         if (playerState != PlayerState.Alive) { return; }
 
-        Run         (input.HorizontalAxisInput);
-        Jump        (input.JumpButtonDown, input.JumpButtonReleased);
-        ClimbLadder (input.VerticalAxisInput);
-        UseWeapon   (input.Fire1Button);
-        CheckWeaponInteractions (input.changeWeaponAction);
-        ChooseSpriteFlipX();
+        Run(input.HorizontalAxisInput);
+        Jump(input.JumpButtonDown, input.JumpButtonReleased);
+        ClimbLadder(input.VerticalAxisInput);
+
+        if (input.Fire1Button && !m_Animator.GetBool("Climbing")) UseWeapon();
+
+        CheckWeaponInteractions(input.changeWeaponAction);
         Die();
+
+        ChooseSpriteFlipX();
+    }
+
+    public void ExecuteNetworkPlayerUpdate()
+    {
+        ChooseSpriteFlipX();
     }
 
     private void FixedUpdate()
@@ -92,9 +112,20 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UseWeapon(bool fireButton)
+    [Client]
+    public void UseWeapon()
     {
-        if (fireButton && !m_Animator.GetBool("Climbing")) m_WeaponSystem.AttemptAttack();
+        // If a shot was successful
+        if (m_WeaponSystem.AttemptAttack())
+        {
+            CmdPlayerUseWeapon(networkId);
+        }
+    }
+
+    [Command]
+    public void CmdPlayerUseWeapon(string _ID)
+    {
+        Debug.Log("Player " + _ID + " shot!");
     }
 
     public void Die()

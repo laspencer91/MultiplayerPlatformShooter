@@ -161,8 +161,7 @@ Prefab:
       propertyPath: m_Name
       value: SpawnPoint Red
       objectReference: {fileID: 0}
-    - target: {fileID: 114198307257121166, guid: 3e5c2f5090922674d954b3b13f1ec240,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: team
       value: 0
       objectReference: {fileID: 0}
@@ -258,8 +257,7 @@ Prefab:
       propertyPath: m_Name
       value: SpawnPoint Red
       objectReference: {fileID: 0}
-    - target: {fileID: 114198307257121166, guid: 3e5c2f5090922674d954b3b13f1ec240,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: team
       value: 0
       objectReference: {fileID: 0}
@@ -11527,9 +11525,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1796702865503188, guid: b8e089ba55a132e4583cee497feb074f, type: 2}
       propertyPath: m_Name
-      value: _SpawnManager
+      value: _SpawnPositions
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114096061818246082, guid: b8e089ba55a132e4583cee497feb074f, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b8e089ba55a132e4583cee497feb074f, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &462232428
@@ -17961,8 +17960,7 @@ Prefab:
       propertyPath: m_Name
       value: SpawnPoint Red
       objectReference: {fileID: 0}
-    - target: {fileID: 114198307257121166, guid: 3e5c2f5090922674d954b3b13f1ec240,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: team
       value: 0
       objectReference: {fileID: 0}
@@ -18011,6 +18009,11 @@ Prefab:
     - target: {fileID: 1772475231145422, guid: 3e5c2f5090922674d954b3b13f1ec240, type: 2}
       propertyPath: m_Name
       value: SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 114573156334787418, guid: 3e5c2f5090922674d954b3b13f1ec240,
+        type: 2}
+      propertyPath: team
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e5c2f5090922674d954b3b13f1ec240, type: 2}
@@ -18703,6 +18706,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114573156334787418, guid: 3e5c2f5090922674d954b3b13f1ec240,
+        type: 2}
+      propertyPath: team
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e5c2f5090922674d954b3b13f1ec240, type: 2}
   m_IsPrefabAsset: 0
@@ -18787,6 +18795,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114573156334787418, guid: 3e5c2f5090922674d954b3b13f1ec240,
+        type: 2}
+      propertyPath: team
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114981730940722280, guid: 3e5c2f5090922674d954b3b13f1ec240,
+        type: 2}
+      propertyPath: boxSize.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e5c2f5090922674d954b3b13f1ec240, type: 2}
   m_IsPrefabAsset: 0
@@ -18798,8 +18816,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2063375116}
-  - component: {fileID: 2063375115}
   - component: {fileID: 2063375114}
+  - component: {fileID: 2063375117}
   m_Layer: 0
   m_Name: _NetworkManager
   m_TagString: Untagged
@@ -18815,41 +18833,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063375113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1606126427, guid: dc10c80e551224948a7991ac2499de8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f090ebc33f7a943900a6a94e2c6591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   showGUI: 1
   offsetX: 0
   offsetY: 0
---- !u!114 &2063375115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2063375113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 2108048308, guid: dc10c80e551224948a7991ac2499de8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NetworkPort: 3000
-  m_ServerBindToIP: 0
-  m_ServerBindAddress: 
-  m_NetworkAddress: localhost
-  m_DontDestroyOnLoad: 1
-  m_RunInBackground: 1
-  m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 1729620783075962, guid: a891c5398c4634740b995832de37d78c,
-    type: 2}
-  m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 1
-  m_OfflineScene: 
-  m_OnlineScene: 
-  m_SpawnPrefabs: []
-  m_MaxConnections: 4
-  m_UseWebSockets: 0
-  isNetworkActive: 0
 --- !u!4 &2063375116
 Transform:
   m_ObjectHideFlags: 0
@@ -18863,6 +18853,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2063375117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2063375113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4175e211bbe133d48ad89077f9c1de41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NetworkPort: 3300
+  m_MaxConnections: 4
+  m_ServerBindToIP: 0
+  m_DontDestroyOnLoad: 1
+  m_RunInBackground: 1
+  m_AutoCreatePlayer: 1
+  m_UseWebSockets: 0
+  m_ServerBindAddress: 
+  m_NetworkAddress: localhost
+  m_OfflineScene: 
+  m_OnlineScene: 
+  m_SpawnPrefabs: []
+  m_LogLevel: 1
+  m_PlayerPrefab: {fileID: 1729620783075962, guid: a891c5398c4634740b995832de37d78c,
+    type: 2}
+  m_PlayerSpawnMethod: 0
+  m_SpawnManager: {fileID: 0}
+  isNetworkActive: 0
 --- !u!1001 &2135855566
 Prefab:
   m_ObjectHideFlags: 0
@@ -18907,6 +18926,14 @@ Prefab:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 366947673}
+    - target: {fileID: 4727198992889566, guid: efb82f95c7eec1843bb8980f8829d20b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.7793598
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727198992889566, guid: efb82f95c7eec1843bb8980f8829d20b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.3978953
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb82f95c7eec1843bb8980f8829d20b, type: 2}
   m_IsPrefabAsset: 0

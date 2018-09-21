@@ -5,13 +5,11 @@ using Mirror;
 
 public class CustomNetworkManager : NetworkManager
 {
-    public override void OnServerReady(NetworkConnection conn)
+    protected override void OnServerReady(NetworkConnection conn)
     {
-        Debug.Log("Player is ready " + conn);
-    }
+        base.OnServerReady(conn);
 
-    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
-    {
-        Debug.Log("Player Added. Spawn?");
+        //Debug.Log("Player is ready " + conn);
+        //SpawnPlayer(conn);
     }
 }

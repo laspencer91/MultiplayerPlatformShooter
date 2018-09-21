@@ -95,15 +95,16 @@ public abstract class Gun : Weapon, IShootable
     /// Attempt to shoot, but this will take into acount fire rate and reloading. Won't
     /// shoot if it's not supposed to
     /// </summary>
-    public override void Attack()
+    public override bool Attack()
     {
-        if (currentShotTimer > 0) return;
+        if (currentShotTimer > 0) return false;
 
         if (currentShotsInClip > 0)
         {
             currentShotTimer = gunProperties.fireRate;
             currentShotsInClip -= 1;
             PerformShot();
+            return true;
         }
         else if (currentState != WeaponState.Reloading)
         {
@@ -111,5 +112,7 @@ public abstract class Gun : Weapon, IShootable
             OnReloadBegin();
             StartCoroutine(Reload());
         }
+
+        return false;
     }
 }

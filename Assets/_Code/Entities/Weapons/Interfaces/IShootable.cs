@@ -5,5 +5,5 @@ using System.Text;
 
 interface IShootable
 {
-    void Attack();
+    bool Attack();
 }

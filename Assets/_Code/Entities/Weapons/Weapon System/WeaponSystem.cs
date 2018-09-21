@@ -167,10 +167,13 @@ public class WeaponSystem : MonoBehaviour
     /// <summary>
     /// Attempt to use the weapons Attack. For a Gun this is shooting
     /// </summary>
-    public void AttemptAttack()
+    /// <returns>If an attack was successfully performed</returns>
+    public bool AttemptAttack()
     {
         if (equippedWeapon != null)
-            equippedWeapon.Attack();
+            return equippedWeapon.Attack();
+
+        return false;
     }
 
     public void LogWeaponSystemState()
